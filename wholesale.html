@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Import & Export | KF General Trading</title>
+  <style>
+    /* ===== BASE RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #b22222;
+      color: white;
+      padding: 15px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    /* ===== MOBILE MENU ===== */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #b22222;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        text-align: right;
+        padding: 15px;
+      }
+      nav.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    /* ===== GOOGLE TRANSLATE ===== */
+    #google_translate_element {
+      background: linear-gradient(135deg, #ffd700, #ffcc00);
+      border-radius: 25px;
+      padding: 5px 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 2000;
+    }
+    #google_translate_element:hover {
+      background: linear-gradient(135deg, #ffdb4d, #ffe680);
+      transform: scale(1.03);
+    }
+    .goog-te-gadget { font-size: 14px !important; font-weight: 600 !important; color: #8b0000 !important; text-transform: uppercase; }
+    .goog-te-combo { border: none; background: transparent; color: #8b0000; font-weight: 600; cursor: pointer; outline: none; }
+    .goog-logo-link, .goog-te-gadget > span { display: none !important; }
+
+    /* ===== MAIN SECTION ===== */
+    section {
+      padding: 120px 20px 60px;
+      text-align: center;
+    }
+
+    section h2 {
+      color: #b22222;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    /* ===== IMAGE STYLE ===== */
+    .import-image {
+      width: 90%;
+      max-width: 700px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .import-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+      .import-image {
+        width: 100%;
+        max-width: 90%;
+      }
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #b22222;
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+      margin-top: 40px;
+    }
+
+    footer p {
+      font-size: 15px;
+    }
+
+    .social-link {
+      display: inline-block;
+      margin: 0 15px;
+      transition: transform 0.3s, filter 0.3s;
+    }
+
+    .social-link img {
+      width: 35px;
+      height: 35px;
+      filter: grayscale(50%);
+      transition: transform 0.3s, filter 0.3s;
+    }
+
+    .social-link:hover img {
+      transform: scale(1.2);
+      filter: grayscale(0%);
+    }
+
+    .telegram:hover img { filter: drop-shadow(0 0 5px #0088cc); }
+    .instagram:hover img { filter: drop-shadow(0 0 5px #e1306c); }
+    .facebook:hover img { filter: drop-shadow(0 0 5px #3b5998); }
+    .tiktok:hover img { filter: drop-shadow(0 0 5px #000000); }
+       .logo-container {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.logo {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+  border: 7px solid #fff;
+  box-shadow: 0 0  8px rgba(0, 0, 0, 0.15);
+}
+  </style>
+</head>
+
+<body>
+
+  <header>
+      <div class="logo-container">
+    <img src="kfc.jpg" alt="KF General Trading Logo" class="logo">
+    <h1 class="Company - name"></h1>
+  </div>
+    <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="import-export"><br><br><br><br><br>
+    <h2>Wholesale Distribution</h2>
+    <p>
+      KF General Trading provides reliable wholesale distribution of high-quality goods across Ethiopia and beyond.
+We connect producers and retailers through efficient supply chains.
+Our focus is on affordability, consistency, and customer satisfaction.
+We ensure timely delivery and long-term partnerships.
+Your trusted source for bulk trade solutions.
+
+    </p>
+
+    <!-- BEAUTIFUL RESPONSIVE IMAGE -->
+    <img src="ig (8).jpg" alt="Import and Export at KF General Trading" class="import-image" />
+  </section>
+
+  <footer id="contact">
+    <p>📞 +251 925245077  ✉️ kfgeneraltrading@gmail.com</p>
+    <p>© 2025 KF General Trading Company. All Rights Reserved.</p><br>
+    <div class="social-icons">
+      <a href="https://t.me/kf_general_trading" target="_blank" class="social-link telegram">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram">
+      </a>
+      <a href="https://www.instagram.com/kfgeneraltrading12?igsh=Y3JqcnRyMXc0NGFy" target="_blank" class="social-link instagram">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+      </a>
+      <a href="https://www.facebook.com/kfgeneraltrading" target="_blank" class="social-link facebook">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">
+      </a>
+      <a href="https://vm.tiktok.com/ZMH3d7gJ52wr8-DNy3E/" target="_blank" class="social-link tiktok">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok">
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => nav.classList.remove('active'));
+    });
+
+    // Google Translate
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,am,om',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+
+      setTimeout(() => {
+        const selector = document.querySelector('#google_translate_element select');
+        if (selector) {
+          const options = selector.options;
+          for (let i = 0; i < options.length; i++) {
+            if (options[i].value === 'en') options[i].text = 'English';
+            if (options[i].value === 'am') options[i].text = 'አማርኛ (Amharic)';
+            if (options[i].value === 'om') options[i].text = 'Afaan Oromoo';
+          }
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
+

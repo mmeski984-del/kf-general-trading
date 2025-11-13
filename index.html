@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KF General Trading Company</title>
+  <style>
+/* 🌍 Google Translate Button Styling (Responsive) */
+.translate-fix {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 9999;
+  background: linear-gradient(135deg,#ffd700,#ffcc00);
+  padding: 6px 12px;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.translate-fix:hover {
+  background: linear-gradient(135deg, #ffdb4d, #ffe680);
+  transform: scale(1.03);
+}
+
+/* Dropdown style */
+.goog-te-gadget, .goog-te-combo {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #8b0000 !important;
+  font-family: 'Poppins', sans-serif !important;
+  text-transform: uppercase;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.goog-logo-link,
+.goog-te-gadget > span {
+  display: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .translate-fix {
+    top: 12px;
+    right: 12px;
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .translate-fix {
+    top: auto;
+    bottom: 12px;
+    right: 12px;
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .translate-fix {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+
+/* ===== REST OF YOUR STYLES ===== */
+/* Service button */
+.service-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ffd700;
+  color: #b22222;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.service-btn:hover {
+  background-color: #ffcc00;
+  color: #fff;
+}
+
+/* Social icons */
+.social-icons {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.social-link {
+  display: inline-block;
+  margin: 0 15px;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.social-link img {
+  width: 35px;
+  height: 35px;
+  filter: grayscale(50%);
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.social-link:hover img {
+  transform: scale(1.2);
+  filter: grayscale(0%);
+}
+
+/* Optional: specific colors on hover */
+.telegram:hover img { filter: drop-shadow(0 0 5px #0088cc); }
+.instagram:hover img { filter: drop-shadow(0 0 5px #e1306c); }
+.facebook:hover img { filter: drop-shadow(0 0 5px #3b5998); }
+.tiktok:hover img { filter: drop-shadow(0 0 5px #000000); }
+
+/* ===== BASE RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color:  #8b0000;
+  color: white;
+  padding: 15px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: background 0.3s ease;
+}
+
+header.scrolled {
+  background-color: #8b0000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffd700;
+}
+
+/* Mobile Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    flex-direction: column;
+    background: #b22222;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    text-align: right;
+    padding: 15px;
+  }
+  nav.active { display: flex; }
+  .menu-toggle { display: flex; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: rgba(17, 115, 153, 0.5);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 2s ease;
+  font: bold;
+}
+
+.hero h2 {
+  font-size: 38px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+  font-size: 20px;
+  margin: 15px 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero button {
+  background: #ffd700;
+  color: #b22222;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.hero button:hover {
+  background: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+section h2 {
+  color: #0a0a0a;
+  font-size: 30px;
+  margin-bottom: 20px;
+  font: bold;
+}
+
+section p {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font:bold;
+}
+
+#about, #vision, #mission, #aim, #services, #contact {
+  scroll-margin-top: 120px;
+}
+
+#vision, #mission, #aim {
+  background: #fff;
+  padding: 80px 20px;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+#vision:hover, #mission:hover, #aim:hover {
+  background: #fef2f2;
+}
+
+#vision h2, #mission h2, #aim h2 {
+  color: #b22222;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+#vision p, #mission p, #aim p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* ===== SERVICES ===== */
+.services .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 50px;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 0.8s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  color: #b22222;
+  margin-bottom: 10px;
+  font: bold;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #b22222;
+  color: white;
+  text-align: center;
+  padding: 30px 10px;
+}
+
+footer p {
+  font-size: 15px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.logo {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+  border: 7px solid #fff;
+  box-shadow: 0 0  8px rgba(0, 0, 0, 0.15);
+}
+  </style>
+  
+</head>
+<body>
+
+<!-- ✅ Google Translate Button -->
+<div id="google_translate_element" class="translate-fix"></div>
+
+<header>
+  <div class="logo-container">
+    <img src="kfc.jpg" alt="KF General Trading Logo" class="logo">
+    <h1 class="Company - name"></h1>
+  </div>
+
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span><span></span><span></span>
+  </div>
+  <nav id="nav">
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#vision">Vision</a>
+    <a href="#mission">Mission</a>
+    <a href="#aim">Goal</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content"><br><br><br><br><br>
+    <h2>Empowering Trade, Building the Future</h2>
+    <p>Connecting businesses with reliable products, services, and opportunities across Ethiopia and beyond.</p>
+    <button class="service-btn" onclick="window.location.href='discover.html'">Discover more</button>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <h2>About Us</h2>
+  <p>
+    KF General Trading Company is aspires to excellence in diverse business sectors, including education, mining, real estate, agriculture, wholesale, import-export, etc. we aim to buildd trust, efficency, and long-term partnership while exploring opporunities to provide high-quality goods and innovative business solution.
+    
+  </p>
+</section>
+
+<!-- ===== VISION ===== -->
+<section id="vision">
+  <h2>Our Vision</h2>
+  <p>
+    To transform our shared ambition into a legacy, building KF General Trading into a highly respected and profitable multinational enterprise that stands as a testament to what trusted friends can achieve together.
+  </p>
+</section>
+
+<!-- ===== MISSION ===== -->
+<section id="mission" class="services">
+  <h2>Our Mission</h2>
+  <p>
+    Our mission is to build a thriving and sustainable trading business that generates wealth and creates opportunities for us, the founding friends and shareholders, by:
+  </p>
+  <div class="cards">
+    <div class="card">
+      <h3>1. Leverage Our Collective Strength:</h3>
+      <p>Combining our individual skills, networks, and capital to compete effectively in the market and seize opportunities that would be impossible alone.</p>
+    </div>
+    <div class="card">
+      <h3>2. Upholding Unshakeable Trust:</h3>
+      <p>Operating with the highest level of integrity, transparency, and accountability in every decision, ensuring our business success never compromises our personal bonds.</p>
+    </div>
+    <div class="card">
+      <h3>3. Delivering Unmatched Values:</h3>
+      <p>Building a reputation for reliability, quality, and exceptional service in the trading of construction materials, consumer goods, agricultural products, etc.</p>
+    </div>
+    <div class="card">
+      <h3>4. Growing Together:</h3>
+      <p>Ensuring that the company's success translates directly into personal financial growth and professional development for every member of our founding team.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GOAL ===== -->
+<section id="aim" class="services">
+  <h2>Our Goal</h2>
+  <p>Our roadmap for turning our shared dream into a tangible success:</p>
+  <div class="cards">
+    <div class="card">
+      <h3>1. Foundation & Financial Goal (Year 1-2):</h3>
+      <p>* Achieve profitable within the first 18 months of operation.</p>
+      <p>* Secure contracts with at least 5 major reliable suppliers and 10 key recurring clients.</p>
+      <p>* Reinvest 100% of initial profits back into the business to fuel rapid, stable growth.</p>
+      <p>* Draft and sign a clear shareholder agreement that protects both the company and our friendship.</p>
+    </div>
+    <div class="card">
+      <h3>2. Growth & Expansion Goal (Year 3-5):</h3>
+      <p>* Expand our product line into two new, complementary market sectors.</p>
+      <p>* Increase annual revenue by 25% year-over-year.</p>
+      <p>* Begin issuing annual dividends to shareholders once sustainable profitability is secured.</p>
+      <p>* Open a second operational warehouse or office in a strategically important neighboring city.</p>
+    </div>
+    <div class="card">
+      <h3>Relationship & Legacy Goals (ongoing):</h3>
+      <p>* Maintain a unanimous vote on all major strategic decisions, ensuring we remain aligned as a team.</p>
+      <p>* Hold quarterly strategic reviews that are transparent and open, fostering a culture of honest feedback and collective problem-solving.</p>
+      <p>* Establish a "Founders' Pledge" to formally define how new partners can be integrated in the future without diluting our core values.</p>
+      <p>* Build a brand that is synonymous not just with quality, but with integrity and partnerships.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="services">
+  <h2>Our Services</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Import & Export</h3>
+      <p>We handle diverse imports and exports with professional logistics and fast delivery.</p>
+      <button class="service-btn" onclick="window.location.href='import-export.html'">Learn More</button>
+    </div>
+    <div class="card">
+      <h3>Wholesale Distribution</h3>
+      <p>Offering bulk products and materials to trusted partners across Ethiopia.</p>
+      <button class="service-btn" onclick="window.location.href='wholesale.html'">Learn More</button>
+    </div>
+    <div class="card">
+      <h3>Manufacturing</h3>
+      <p>Quality-driven production with innovation and precision.</p>
+      <button class="service-btn" onclick="window.location.href='consulting.html'">Learn More</button>
+    </div>
+    <div class="card">
+      <h3>Tourism in Ethiopia</h3>
+      <p>Discover Ethiopia through authentic and eco-friendly tours.</p>
+      <button class="service-btn" onclick="window.location.href='sourcing.html'">Learn More</button>
+    </div>
+    <div class="card">
+      <h3>Mining</h3>
+      <p>Sustainable and responsible mineral exploration for growth.</p>
+      <button class="service-btn" onclick="window.location.href='Mining.html'">Learn More</button>
+    </div>
+    <div class="card">
+      <h3>Education</h3>
+      <p>Empowering learners through quality, practical education.</p>
+      <button class="service-btn" onclick="window.location.href='education.html'">Learn More</button>
+    </div>
+    <div class="card">
+      <h3>Agriculture Business</h3>
+      <p>Advancing sustainable farming and agribusiness solutions.</p>
+      <button class="service-btn" onclick="window.location.href='agriculture.html'">Learn More</button>
+    </div>
+    <div class="card">
+      <h3>Real Estate Business</h3>
+      <p>Developing trusted, modern spaces for living and investment.</p>
+      <button class="service-btn" onclick="window.location.href='realestate.html'">Learn More</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+  <footer id="contact">
+    <p>📞 +251 925245077 ✉️ kfgeneraltrading@gmail.com</p>
+    <p>© 2025 KF General Trading Company. All Rights Reserved.</p><br>
+          <div class="social-icons">
+    <a href="https://t.me/kf_general_trading" target="_blank" class="social-link telegram">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram">
+    </a>
+    <a href="
+https://www.instagram.com/kfgeneraltrading12?igsh=Y3JqcnRyMXc0NGFy
+" target="_blank" class="social-link instagram">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+    </a>
+    <a href="
+https://www.facebook.com/kfgeneraltrading
+" target="_blank" class="social-link facebook">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">
+    </a>
+    <a href="https://vm.tiktok.com/ZMH3d7gJ52wr8-DNy3E/" target="_blank" class="social-link tiktok">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok">
+    </a>
+  </div>
+
+<script>
+  // Header scroll effect
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('nav');
+  menuToggle.addEventListener('click', () => nav.classList.toggle('active'));
+  nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('active')));
+
+  // Scroll reveal animation
+  const cards = document.querySelectorAll('.card');
+  const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.8;
+    cards.forEach(card => {
+      const top = card.getBoundingClientRect().top;
+      if (top < triggerBottom) card.classList.add('visible');
+    });
+  };
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll();
+</script>
+
+<!-- 🌐 Google Translate Script -->
+<script>
+(function() {
+  const cont = document.getElementById('google_translate_element');
+  if (!cont) return;
+
+  window.googleTranslateElementInit = function() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,am,om',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+
+    setTimeout(renameOptions, 1000);
+    const obs = new MutationObserver(renameOptions);
+    obs.observe(cont, { childList: true, subtree: true });
+  };
+
+  function renameOptions() {
+    const sel = cont.querySelector('select');
+    if (!sel) return;
+    for (let opt of sel.options) {
+      if (opt.value === 'en') opt.text = 'English';
+      if (opt.value === 'am') opt.text = 'Amharic (አማርኛ)';
+      if (opt.value === 'om') opt.text = 'Afaan Oromoo';
+    }
+    sel.style.visibility = 'visible';
+  }
+
+  if (!document.querySelector('script[data-google-translate]')) {
+    const s = document.createElement('script');
+    s.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    s.setAttribute('data-google-translate', '1');
+    document.body.appendChild(s);
+  }
+})();
+</script>
+<script>
+  // Change default Google Translate dropdown text to English
+  function changeGoogleTranslateText() {
+    const interval = setInterval(() => {
+      const select = document.querySelector('.goog-te-combo');
+      if (select) {
+        // Change the first option text
+        select.querySelector('option').text = "Select Language";
+        clearInterval(interval);
+      }
+    }, 500); // Keep trying until the dropdown loads
+  }
+  
+  window.addEventListener('load', changeGoogleTranslateText);
+</script>
+
+
+</body>
+</html>
+

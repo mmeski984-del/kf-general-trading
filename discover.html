@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discover More | KF General Trading</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #fffaf9;
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #b22222;
+      color: white;
+      padding: 15px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #b22222;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        text-align: right;
+        padding: 15px;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      margin-top: 150px;
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to bottom right, #b22222, #2c77cc);
+      color: white;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 18px;
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== CONTENT ===== */
+    .content {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section {
+      margin-bottom: 50px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .section h3 {
+      color: #b22222;
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    .section p {
+      line-height: 1.7;
+      font-size: 17px;
+      margin-bottom: 15px;
+    }
+
+    .section ul {
+      margin-left: 25px;
+      line-height: 1.8;
+    }
+
+    /* ===== IMAGE SECTION ===== */
+    .office-section {
+      text-align: center;
+      background: #fff5e1;
+      padding: 60px 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+    }
+
+    .office-section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .office-section img {
+      max-width: 70%;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .office-section h3 {
+      color: #b22222;
+      margin-top: 25px;
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #b22222;
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+      margin-top: 40px;
+    }
+
+    footer p {
+      font-size: 15px;
+    }
+
+    /* ===== GOOGLE TRANSLATE BUTTON ===== */
+    #google_translate_element {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 1500;
+      background: #ffeb3b;
+      border-radius: 20px;
+      padding: 6px 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+ .social-link {
+    display: inline-block;
+    margin: 0 15px;
+    transition: transform 0.3s, filter 0.3s;
+  }
+
+  .social-link img {
+    width: 35px;
+    height: 35px;
+    filter: grayscale(50%);
+    transition: transform 0.3s, filter 0.3s;
+  }
+
+  .social-link:hover img {
+    transform: scale(1.2);
+    filter: grayscale(0%);
+  }
+
+  /* Optional: specific colors on hover */
+  .telegram:hover img { filter: drop-shadow(0 0 5px #0088cc); }
+  .instagram:hover img { filter: drop-shadow(0 0 5px #e1306c); }
+  .facebook:hover img { filter: drop-shadow(0 0 5px #3b5998); }
+  .tiktok:hover img { filter: drop-shadow(0 0 5px #000000); }
+
+    @media (max-width: 768px) {
+      #google_translate_element {
+        bottom: 15px;
+        right: 15px;
+        top: auto;
+        font-size: 13px;
+        padding: 5px 10px;
+      }
+    }
+    .logo-container {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+
+.logo {
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: white;
+  border: 7px solid #fff;
+  box-shadow: 0 0  8px rgba(0, 0, 0, 0.15);
+}
+  </style>
+</head>
+
+<body>
+
+  <header>
+<div class="logo-container">
+    <img src="kfc.jpg" alt="KF General Trading Logo" class="logo">
+    <h1 class="Company - name"></h1>
+  </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Discover More About KF General Trading</h2>
+    <p>Explore our journey, our shared values, and the future we’re building together.</p>
+  </section>
+
+  <div class="content">
+    <div class="section">
+      <h3>Our Story</h3>
+      <p>KF General Trading was founded by friends united by a shared dream of success, trust, and ambition. We transformed our friendship into a powerful business alliance focused on excellence and reliability.</p>
+    </div>
+
+    <div class="section">
+      <h3>Our Core Values</h3>
+      <ul>
+        <li><strong>Integrity:</strong> We stay true to our word and deliver what we promise.</li>
+        <li><strong>Teamwork:</strong> Friendship and collaboration are our greatest strengths.</li>
+        <li><strong>Excellence:</strong> Every project reflects our commitment to quality and professionalism.</li>
+        <li><strong>Innovation:</strong> We embrace modern business practices and forward-thinking strategies.</li>
+      </ul>
+    </div>
+      <div class="section">
+      <h3>Our Future Direction</h3>
+      <p>We aim to expand our operations regionally and internationally, continuously investing in new opportunities across import–export, real estate, and construction industries.</p>
+    </div>
+
+    <div class="office-section">
+      <h3>Our Future Head Office</h3>
+      <img src="bu.jpg" alt="KF General Trading Future Head Office">
+      <p style="margin-top:15px;">Located in the heart of Addis Ababa, our future head office will represent our growth, vision, and unity — a symbol of how strong partnerships and dreams can shape the future.</p>
+    </div>
+  </div> 
+
+
+
+  <footer id="contact">
+    <p>📞 +251 925245077 ✉️ kfgeneraltrading@gmail.com</p>
+    <p>© 2025 KF General Trading Company. All Rights Reserved.</p><br>
+          <div class="social-icons">
+    <a href="https://t.me/kf_general_trading" target="_blank" class="social-link telegram">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram">
+    </a>
+    <a href="
+https://www.instagram.com/kfgeneraltrading12?igsh=Y3JqcnRyMXc0NGFy
+" target="_blank" class="social-link instagram">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+    </a>
+    <a href="
+https://www.facebook.com/kfgeneraltrading
+" target="_blank" class="social-link facebook">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">
+    </a>
+    <a href="https://vm.tiktok.com/ZMH3d7gJ52wr8-DNy3E/" target="_blank" class="social-link tiktok">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok">
+    </a>
+  </div>
+
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+      });
+    });
+
+    // Google Translate Initialization
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,am,om',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+
+      // Custom language names
+      setTimeout(() => {
+        const selector = document.querySelector('#google_translate_element select');
+        if (selector) {
+          const options = selector.options;
+          for (let i = 0; i < options.length; i++) {
+            if (options[i].value === 'en') options[i].text = 'English';
+            if (options[i].value === 'am') options[i].text = 'አማርኛ (Amharic)';
+            if (options[i].value === 'om') options[i].text = 'Afaan Oromoo';
+          }
+        }
+      }, 1000);
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
+
+
